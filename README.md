@@ -35,6 +35,17 @@ A modern, beautiful HTML report generator for k6 performance tests with an inter
 
 ## Installation
 
+### Direct Import Raw
+
+Add the following import like this in any ts file:
+
+```typescript
+// @ts-ignore
+import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern-reporter/refs/heads/main/k6-modern-reporter.js';
+```
+
+### Using NPM (Not Working with k6 1.5)
+
 1. Run `npm i k6-modern-reporter` into your k6 project
 2. Import `htmlReport` in your script:
 
@@ -51,7 +62,8 @@ Example of a k6 test script:
 ```typescript
 import http from 'k6/http';
 import { check } from 'k6';
-import { htmlReport } from 'k6-modern-reporter';
+// @ts-ignore
+import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern-reporter/refs/heads/main/k6-modern-reporter.js';
 
 export const options = {
     scenarios: {
