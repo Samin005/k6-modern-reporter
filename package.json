@@ -4,7 +4,7 @@
   "description": "A modern reporter for k6",
   "main": "k6-modern-reporter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "k6 run ./test-reporter.ts"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Samin005/k6-modern-reporter/issues"
   },
-  "homepage": "https://github.com/Samin005/k6-modern-reporter#readme"
+  "homepage": "https://github.com/Samin005/k6-modern-reporter#readme",
+  "devDependencies": {
+    "@types/k6": "^1.5.0"
+  }
 }
