@@ -1,0 +1,25 @@
+{
+  "name": "k6-modern-reporter",
+  "version": "1.0.0",
+  "description": "A modern reporter for k6",
+  "main": "k6-modern-reporter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samin005/k6-modern-reporter.git"
+  },
+  "keywords": [
+    "k6",
+    "reporter",
+    "load-testing",
+    "k6-reporter"
+  ],
+  "author": "Samin Azhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Samin005/k6-modern-reporter/issues"
+  },
+  "homepage": "https://github.com/Samin005/k6-modern-reporter#readme"
+}
