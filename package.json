@@ -1,6 +1,6 @@
 {
   "name": "k6-modern-reporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern reporter for k6",
   "main": "k6-modern-reporter.js",
   "scripts": {
