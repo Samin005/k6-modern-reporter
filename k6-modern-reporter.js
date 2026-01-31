@@ -798,10 +798,10 @@ function generateModernHTML(data, title, subtitle, httpMethod, additionalInfo, s
              FOOTER
              ======================================== -->
         <div class="footer">
-            <p><strong>K6 Reporter by Samin Azhan</strong></p>
+            <p><strong>K6 Modern Reporter by Samin Azhan</strong></p>
             <p>Generated with ❤️ by K6 Performance Testing Suite</p>
             <p style="margin-top: 10px;">
-                <a href="https://k6.io/docs/" target="_blank">K6 Documentation</a> | 
+                <a href="https://github.com/Samin005/k6-modern-reporter" target="_blank">Documentation</a> | 
                 <a href="https://github.com/Samin005" target="_blank">GitHub</a>
             </p>
         </div>
@@ -1236,7 +1236,7 @@ function generateOverviewSection(stats) {
                 <!-- Average Response Time -->
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
                     <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 5px;">AVG</div>
-                    <div style="font-size: 1.8em; font-weight: 700, color: #667eea;">${stats.avgResponseTime}ms</div>
+                    <div style="font-size: 1.8em; font-weight: 700; color: #667eea;">${stats.avgResponseTime}ms</div>
                 </div>
                 <!-- 95th Percentile Response Time -->
                 <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">

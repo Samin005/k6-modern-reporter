@@ -1,12 +1,12 @@
 import http from 'k6/http';
-import { htmlReport } from './k6-modern-reporter.js';
 import { check } from 'k6';
+import { htmlReport } from './k6-modern-reporter.js';
 
 export const options = {
     scenarios: {
         shared_iteration: {
             executor: 'shared-iterations',
-            vus: 50,
+            vus: 20,
             iterations: 100,
             maxDuration: '60s',
         }
