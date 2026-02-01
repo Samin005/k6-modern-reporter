@@ -44,14 +44,69 @@ Add the following import like this in any ts file:
 import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern-reporter/refs/heads/main/k6-modern-reporter.js';
 ```
 
-### Using NPM (Not Working with k6 1.5)
+### Using NPM and esbuild
 
 1. Run `npm i k6-modern-reporter` into your k6 project
 2. Import `htmlReport` in your script:
 
-```javascript
-import { htmlReport } from 'k6-modern-reporter';
-```
+    ```typescript
+    import { htmlReport } from 'k6-modern-reporter';
+    ```
+
+3. k6 does not allow npm packages (since it uses go), so we have to create a bundle of the file if we want to run it. For example, let's say we have a `test.ts` (or `test.js`, works for both .ts and .js) with k6 tests:
+
+    ```typescript
+    import http from 'k6/http';
+    import { htmlReport } from 'k6-modern-reporter';
+
+    export const options = {
+        scenarios: {
+            shared_iteration: {
+                executor: 'shared-iterations',
+                vus: 50,
+                iterations: 100,
+                maxDuration: '60s',
+            }
+        }
+    };
+
+    export default function () {
+        const response = http.get("https://httpbin.org/get");
+    }
+
+    // Generate the HTML report
+    export function handleSummary(data) {
+        const reportFileName = `./test-report-${new Date().toJSON().split(':').join('-')}.html`;
+        return {
+            [reportFileName]: htmlReport(data)
+        };
+    }
+    ```
+
+4. We have to create a bundle of the file `test.bundle.js` with esbuild.
+
+    Windows Powershell:
+
+    ```powershell
+    npx esbuild test.ts --bundle --outfile=dist/test.bundle.js --format=esm --external:k6 --external:"k6/*"
+    ```
+
+    Mac/Linux:
+
+    ```bash
+    npx esbuild test.ts \
+    --bundle \
+    --outfile=dist/test.bundle.js \
+    --format=esm \
+    --external:k6 \
+    --external:k6/*
+    ```
+
+5. Now run the bundle file with k6:
+
+    ```bash
+    k6 run dist/test.bundle.js
+    ```
 
 ## Usage
 
@@ -161,9 +216,7 @@ Shows threshold validation results:
 
 ### 📝 Testing it out locally
 
-Ideally have an empty directory named `reports`.
-
-## Running Tests
+Clone the repo and run:
 
 ```bash
 npm test
