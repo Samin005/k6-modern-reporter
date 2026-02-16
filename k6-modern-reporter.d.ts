@@ -1,2 +1,1 @@
-declare const htmlReport: any;
-export default htmlReport;
+export function htmlReport(data: any, options?: any): any;
