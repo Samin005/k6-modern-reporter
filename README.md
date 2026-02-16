@@ -53,7 +53,7 @@ import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern
     import { htmlReport } from './node_modules/k6-modern-reporter/k6-modern-reporter.js';
     ```
 
-    Note: since k6 does not support npm packages by default, remember to include the entire relative path in the import like shown above.
+    Note: since k6 does not support npm packages by default (as k6 runs using go), remember to include the entire relative path in the import like shown above.
 
 3. Example: let's say we have a `test.ts` (or `test.js`, works for both .ts and .js) with k6 tests:
 
