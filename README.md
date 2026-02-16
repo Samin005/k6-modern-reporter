@@ -50,14 +50,16 @@ import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern
 2. Import `htmlReport` in your script:
 
     ```typescript
-    import { htmlReport } from 'k6-modern-reporter';
+    import { htmlReport } from './node_modules/k6-modern-reporter/k6-modern-reporter.js';
     ```
 
-3. k6 does not allow npm packages (since it uses go), so we have to create a bundle of the file if we want to run it. For example, let's say we have a `test.ts` (or `test.js`, works for both .ts and .js) with k6 tests:
+    Note: since k6 does not support npm packages by default, remember to include the entire relative path in the import like shown above.
+
+3. Example: let's say we have a `test.ts` (or `test.js`, works for both .ts and .js) with k6 tests:
 
     ```typescript
     import http from 'k6/http';
-    import { htmlReport } from 'k6-modern-reporter';
+    import { htmlReport } from './node_modules/k6-modern-reporter/k6-modern-reporter.js';
 
     export const options = {
         scenarios: {
@@ -71,10 +73,10 @@ import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern
     };
 
     export default function () {
-        const response = http.get("https://httpbin.org/get");
+        const response = http.get("https://quickpizza.grafana.com");
     }
 
-    // Generate the HTML report
+    // Generate the modern HTML report
     export function handleSummary(data) {
         const reportFileName = `./test-report-${new Date().toJSON().split(':').join('-')}.html`;
         return {
@@ -83,29 +85,10 @@ import { htmlReport } from 'https://raw.githubusercontent.com/Samin005/k6-modern
     }
     ```
 
-4. We have to create a bundle of the file `test.bundle.js` with esbuild.
-
-    Windows Powershell:
-
-    ```powershell
-    npx esbuild test.ts --bundle --outfile=dist/test.bundle.js --format=esm --external:k6 --external:"k6/*"
-    ```
-
-    Mac/Linux:
+    We can run this file with k6:
 
     ```bash
-    npx esbuild test.ts \
-    --bundle \
-    --outfile=dist/test.bundle.js \
-    --format=esm \
-    --external:k6 \
-    --external:k6/*
-    ```
-
-5. Now run the bundle file with k6:
-
-    ```bash
-    k6 run dist/test.bundle.js
+    k6 run test.ts
     ```
 
 ## Usage

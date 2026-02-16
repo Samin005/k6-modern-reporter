@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "A modern reporter for k6",
   "main": "k6-modern-reporter.js",
+  "types": "k6-modern-reporter.d.ts",
   "scripts": {
     "test": "k6 run ./test-reporter.ts"
   },
